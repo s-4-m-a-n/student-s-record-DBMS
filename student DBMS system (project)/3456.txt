@@ -1,0 +1,7 @@
+
+
+		 ID:  3456
+		 name:  ramesh			 father's name:  kaji
+		 Rollno:  34			 Address:  belbari
+		 Faculty:  bsccsit			 Level:  +2
+		 email:  googel			 mobile no:  googel

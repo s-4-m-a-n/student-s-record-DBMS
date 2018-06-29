@@ -1,0 +1,7 @@
+
+
+		 ID:  3233
+		 name:  ram			 father's name:  shyam
+		 Rollno:  45			 Address:  balbari
+		 Faculty:  csit			 Level:  3
+		 email:  dfgd			 mobile no:  dfgd
