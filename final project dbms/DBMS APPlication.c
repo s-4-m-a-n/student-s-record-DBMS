@@ -2,6 +2,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include<conio.h>
+#include <windows.h>
+
+
+void SetColor(int value){
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),  value);    //for color text  output
+
+ /*   1: Blue
+2: Green
+3: Cyan
+4: Red
+5: Purple
+6: Yellow (Dark)
+7: Default white
+8: Gray/Grey
+9: Bright blue
+10: Brigth green
+11: Bright cyan
+12: Bright red
+13: Pink/Magenta
+14: Yellow
+15: Bright white
+-Numbers after 15 are background colors-
+
+   */
+}
+
 struct old{
 char old_user[10];
 };
@@ -9,13 +35,13 @@ char old_user[10];
 typedef struct rec{
 char id[7];
 char name[20];
-char f_name[10];
+char f_name[20];
 char roll_no[3];
-char address[10];
+char address[20];
 char faculty[10];
-char level[10];
-char phone_no[10];
-char email[10];
+char level[20];
+char mobile_no[15];
+char email[20];
 
 }student;
 
@@ -69,8 +95,11 @@ int i;
 char o; //option for erasing and  crating new data
 
  loop3:
-
+SetColor(6);
+printf(" \n\n\t\t\t ( D A T A  E N T R Y)");
+SetColor(2);
  printf("\n\n\tenter the id no.\t");
+ SetColor(6);
  scanf("%s",(*std).id);
 
  strcpy(fname,(*std).id);
@@ -79,11 +108,16 @@ char o; //option for erasing and  crating new data
 
    if(fp !=NULL)
    {
+SetColor(4);
        printf("\n\n\t\tsorry student id error");
+SetColor(4);
       printf("\n\t\t\t e r r o r  : student id already exist");
       loop6:
+SetColor(7);
        printf("\n\n do you want to erase and crate new one \n");
+SetColor(9);
        printf("enter y for yes and n for no\t");
+SetColor(7);
        scanf(" %c",&o);
 
        switch(o){
@@ -95,8 +129,10 @@ char o; //option for erasing and  crating new data
          break;
      default:
        {
+SetColor(4);
         printf("\n\n\t\tsorry!!wrong choice  ");
         printf("\n\n\t\t");
+SetColor(7);
         system("pause");
         system("cls");
         goto loop6;
@@ -109,23 +145,37 @@ char o; //option for erasing and  crating new data
    }
 
 loop7:
-  printf("\n\n\n\tenter the name of the student\t\t");
+SetColor(6);
+  printf("\n\n\n\tenter the name of the student (firstname_lastname)\t\t");
+SetColor(7);
  scanf("%s",(*std).name);
-    printf("\n\n\n\tenter the father's name of the student\t\t");
+SetColor(6);
+    printf("\n\n\tenter the father's name of the student\t\t");
+SetColor(7);
  scanf("%s",(*std).f_name);
-  printf("\n\n\n\t enter the roll no. of the student\t\t");
+SetColor(6);
+  printf("\n\n\t enter the roll no. of the student\t\t");
+SetColor(7);
   scanf("%s",(*std).roll_no);
-
- printf("\n\n\n\tenter the address of the student \t\t");
+SetColor(6);
+ printf("\n\n\tenter the address of the student \t\t");
+SetColor(7);
  scanf("%s",(*std).address);
-  printf("\n\n\n\tenter the  faculty   of the student \t\t");
+SetColor(6);
+  printf("\n\n\tenter the  faculty   of the student \t\t");
+SetColor(7);
   scanf("%s",(*std).faculty);
-  printf("\n\n\n\tenter the level of the student\t\t");
+SetColor(6);
+  printf("\n\n\tenter the level of the student\t\t");
+SetColor(7);
    scanf("%s",(*std).level);
-  printf("\n\n\n\tenter the  mobile no. of the student \t\t");
-  scanf("%s",(*std).phone_no);
-
-printf("\n\n\n\tenter the email address of the student\t\t");
+SetColor(6);
+  printf("\n\n\tenter the  mobile no. of the student \t\t");
+SetColor(7);
+  scanf("%s",(*std).mobile_no);
+SetColor(6);
+printf("\n\n\tenter the email address of the student\t\t");
+SetColor(7);
  scanf("%s",(*std).email);
 
 }
@@ -146,11 +196,14 @@ int i;
 
   if(fname==NULL)
   {
+      SetColor(4);
       puts("sorry error to create data database");
+      SetColor(7);
       exit(1);
   }
 
        fputs("\n\n\t\t ID:  ",fp);
+
       fputs((*std).id,fp);
 
        fputs("\n\t\t name:  ",fp);
@@ -171,12 +224,14 @@ int i;
        fputs("\n\t\t email:  ",fp);
       fputs((*std).email,fp);
          fputs("\t\t\t mobile no:  ",fp);
-      fputs((*std).email,fp);
+      fputs((*std).mobile_no,fp);
 
 
 
 fclose(fp);
+SetColor(9);
 printf("\n\n\t\tdata successfully stored \n\n\n");
+SetColor(7);
 system("pause");
 
 
@@ -193,17 +248,28 @@ void search(void){
     FILE *fp;
     loop9:
         system("cls");
+        SetColor(6);
+        printf("\n\n\t\t ( S E A R C H )");
+SetColor(2);
+
     printf("\n\n\t\tenter the id of the student:\t");
+SetColor(4);
     scanf("%s",fname);
+SetColor(6);
      printf("\t--------------------------------------------------------------------\n\n\n\t\t\t");
+SetColor(7);
     strcat(fname,".it");
      fp=fopen(fname,"r");
     if(fp==NULL)
     {
+SetColor(4);
 
         printf("no file found\n\n\n\n\t\t\t");
+SetColor(7);
         system("pause");
+SetColor(9);
         printf("\n\n enter 'h' to goto home_menu and and single key to re-enter id \n\n\t\t ");
+SetColor(7);
           scanf(" %c",&choice);
           switch(choice){
       case 'h':
@@ -224,6 +290,7 @@ void search(void){
     printf("%c",c);
     }
 printf("\n\n\n\t\t\t");
+SetColor(9);
 
 }
 
@@ -238,18 +305,22 @@ std=&std1;
  loop4:
 
      system("cls");
-
+SetColor(2);
         printf("\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tCHOOSE THE  OPTION GIVEN BELOW ");
         printf("\n\t\t\t\t\t\t---------------------------------------------------------------------\n");
+SetColor(6);
         printf("\t\t\t\t\t\t\t\t(HOME_MENU)");
-        printf("\n\n\t\t\t\t\t\t\t1.data_entry");
-        printf("\t\t2.search");
+        printf("\n\n\t\t\t\t\t\t\t1.DATA_ENTRY");
+        printf("\t\t2.SEARCH");
         printf("\t\t3.edit");
-        printf("\n\n\t\t\t\t\t\t\t4.marksheet");
-        printf("\t\t5.change login username and password ");
-        printf("\n\n\t\t\t\t\t\t\t6.about");
-        printf("\t\t\t7.exit");
+        printf("\n\n\t\t\t\t\t\t\t4. MARKSHEET");
+        printf("\t\t5.ACCOUNT_SETTING ");
+        printf("\n\n\t\t\t\t\t\t\t6.ABOUT");
+SetColor(4);
+        printf("\t\t\t7.EXIT");
+
         printf("\n\n\t\t\t\t\t\t\t");
+SetColor(7);
    scanf(" %c",&choice);
 
    switch(choice)
@@ -263,10 +334,13 @@ loop5:
         datastore(std);
 loop7:
          system("cls");
+         SetColor(2);
         printf("\n\n\n\n\n\n\t\t\t\t\t\t\t\t\twhat do you want to do\n ");
         printf("\t\t\t\t\t\t\t  ------------------------------------------------------------");
+         SetColor(7);
         printf("\n\n\t\t\t\t\t\t\t\t\t1.re-entry    2.home_menu");
         printf("\n\n\t\t\t\t\t\t\t\t3.search      4.exit \n\n\t\t\t");
+
         scanf(" %c",&op);
 
 switch(op){
@@ -291,6 +365,7 @@ switch(op){
           }
       default:
           {
+              SetColor(20);
               printf("\n\n\t\tsorry!! you have entered wrong value \n\n\n\n");
               system("pause");
               system("cls");
@@ -315,8 +390,13 @@ loop6:
         {
             loop8:
             system("cls");
+        SetColor(6);
+            printf("\n\n\t\t ( E D I T )");
+    SetColor(4);
+
            printf("\n\n\t\t do you want to rewrite or delete the database");
            printf("\n\n\t\t press 'r' to rewrite and 'd' to delete\t");
+    SetColor(7);
            scanf(" %c",&opt);
    switch(opt){
    case 'r':
@@ -358,7 +438,9 @@ loop6:
           }
       default:
           {
+    SetColor(4);
         printf("\n\n\n\t\t\t sorry ! you have entered wrong value\n\n\t\t\t\t");
+    SetColor(7);
         system("pause");
         goto loop4;
           }
@@ -368,17 +450,27 @@ loop6:
 
 void about()
 {
-    printf("\n\n welcome to student database management system and marksheet generator software");
+    SetColor(6);
+    printf("\n\n\t\t\t\t ( A B O U T )");
+    SetColor(2);
 
-    printf("\t version v1 \n\n\n");
+    printf("\n\n \t\t\t\t-------welcome to student database management system and marksheet generator software---------------\n");
+SetColor(6);
+    printf("\t\t\t\t\t\t version v1 \n\n\n");
+SetColor(9);
+    printf("\n\n\t\t\t\t\t-This application software is developed as the project work of\n\t\t\t\t\t c programming language by the group of selected student of \n\t\t\t\t\t SUSHMA GODAWARI COLLEGE - faculty bsccsit and level 1st year 1st part.");
+   SetColor(6);
+    printf("\n\t\t\t\t\t\tTHANKS TO :\t");
+    SetColor(5);
+    printf("\t\t Rabin Rijal : project supervisor \n");
+    SetColor(3);
+        printf("\t\t\t\t\t\t\t\tSuman Dhakal (roll no: 16475 ) : developer (project leader) \n");
+        printf("\t\t\t\t\t\t\t\tDipesh Dhungana (roll no: 16457 ) :developer \n");
+        printf("\t\t\t\t\t\t\t\tAnish Limbu (roll no : 16448 ): developer \n");
+        printf("\t\t\t\t\t\t\t\tRikesh Nepal(roll no :16469 ): developer \n\n\n");
 
-    printf("\n\n-This application software is developed as the project work of c programming language by the group of selected student of SUSHMA GODAWARI COLLEGE - faculty bsccsit and level 1st year 1st part.");
-    printf("THANKS TO :");
-    printf("Rabin Rijal : project supervisor ");
-     printf("Suman Dhakal : developer (project leader) ");
-      printf("Dipesh Dhungana :developer ");
-       printf("Anish Limbu: developer ");
-       printf("Uraj Nepla: developer ");
+       printf("\t\t\t\t\t\t");
+       SetColor(4);
     system("pause");
 
 }
@@ -392,33 +484,50 @@ void marksheet(void)
     char faculty[10];
     char level[5];
    FILE *fp;
-     printf("\n\n\n\t\t\t\t\t\tenter the  faculty:  ");
-     scanf("%s",faculty);
-     printf("\n\n\t\t\t\t\t\tenter the level :  ");
-     scanf("%s",level);
-    printf("\n\n\t\t\t\t\t\tenter the no. of students:  ");
-    scanf("%d",&ns);
+   SetColor(6);
+   printf("\n\n\t\t\t ( M A R K S H E E T )");
 
+SetColor(2);
+
+     printf("\n\n\n\t\t\t\t\t\tenter the  faculty:  ");
+SetColor(7);
+     scanf("%s",faculty);
+SetColor(2);
+     printf("\n\n\t\t\t\t\t\tenter the level :  ");
+SetColor(7);
+     scanf("%s",level);
+SetColor(2);
+    printf("\n\n\t\t\t\t\t\tenter the no. of students:  ");
+SetColor(7);
+    scanf("%d",&ns);
+SetColor(2);
   printf("\n\n\t\t\t\t\t\tenter subject name(4 letters ):\n");
 for(i=0;i<5;i++)
 {
     printf("\t\t\t\t\t\t\t\t\t\t");
+SetColor(i+1);
     scanf("%s",sub[i]);
 
 }
 system("cls");
+ SetColor(6);
+   printf("\n\n\t\t\t ( M A R K S H E E T )");
     for (i=0;i<ns;i++)
     {
-
+SetColor(9);
        printf("\n\n\t\t\t\t\t\t\t\t\t enter the id of the student:   ");
+SetColor(6);
          scanf("%s",&no[i].id);
           strcat(no[i].id,".it");
-
+SetColor(2);
      printf("\t\t\t\t\t\t\t\t\t enter the name of  student :   ") ;
+SetColor(7);
        scanf("%s",&no[i].nam);
-
+SetColor(3);
        printf("\t\t\t\t\t\t\t\t\t enter the marks of :\n");
+SetColor(6);
        printf("\t\t\t\t\t\t\t\t----------------------------------------------------------------\n");
+SetColor(2);
        printf("\t\t\t\t\t\t\t\t\t\t %s :    ",sub[0]);
        scanf("%d",&no[i].marks.sub1);
 
@@ -438,13 +547,18 @@ system("cls");
 
 system("cls");
 printf("\n\n\n\n");
+SetColor(2);
 printf("  \t :::::::::::::::::::::::::::::::::::::::::/\\ :::::/\\:::::::::::::::::::::::::::::::::::::::::::\n");
 printf("    \t  :::::::::::::::::::::::::::::::::::: //\\\\ :://\\\\ARKSHEET:::::::::::::::::::::::::::\n");
 printf("   \t::::::::::::::::::::::::::::::::::::::://: \\\\//::\\\\::::::::::::::::::::::::::::::::::::::::\n\n\n");
+SetColor(9);
 printf("\t\tF A C U L T Y   :%s\n",faculty);
 printf("\t\t    L E V E L   :%s",level);
+SetColor(5);
 printf(" \n\n __________________________________________________________________________________________________________________\n");
+SetColor(6);
 printf(" |  NAME OF STUDENTS   |  %s  |  %s  | %s     |     %s  |     %s  | TOTAL marks | PERCENTAGE | DIVISION  |\n",sub[0],sub[1],sub[2],sub[3],sub[4],sub[5]);
+SetColor(5);
 printf("  __________________________________________________________________________________________________________________\n");
 printf(" |                     |        |        |          |           |           |             |            |           |\n");
 for (i=0;i<ns;i++)
@@ -456,37 +570,39 @@ for (i=0;i<ns;i++)
      if (div>=80 && no[i].marks.sub1>=32 && no[i].marks.sub2 >=32 && no[i].marks.sub3>=32 && no[i].marks.sub4>=32 && no[i].marks.sub5 >=32)
      {
 
-
+SetColor(9);
 printf(" |%21.7s|%8d|%8d|%10d|%11d|%11d|%12d |%10d %%|   dist    |  \n",no[i].nam,no[i].marks.sub1,no[i].marks.sub2,no[i].marks.sub3,no[i].marks.sub4,no[i].marks.sub5,no[i].total,no[i].per);
 }
 else if (div<80 && div>=60 && no[i].marks.sub1>=32 && no[i].marks.sub2 >=32 && no[i].marks.sub3>=32 && no[i].marks.sub4>=32 && no[i].marks.sub5>=32)
      {
 
-
+SetColor(9);
 printf(" |%21.7s|%8d|%8d|%10d|%11d|%11d|%12d |%10d %%|   first   |  \n",no[i].nam,no[i].marks.sub1,no[i].marks.sub2,no[i].marks.sub3,no[i].marks.sub4,no[i].marks.sub5,no[i].total,no[i].per);
 }
 else if (div <60 && div>=50 && no[i].marks.sub1>=32 && no[i].marks.sub2 >=32 && no[i].marks.sub3>=32 && no[i].marks.sub4>=32 && no[i].marks.sub5 >=32)
      {
 
-
+SetColor(9);
 printf(" |%21.7s|%8d|%8d|%10d|%11d|%11d|%12d |%10d %%|  second   |  \n",no[i].nam,no[i].marks.sub1,no[i].marks.sub2,no[i].marks.sub3,no[i].marks.sub4,no[i].marks.sub5,no[i].total,no[i].per);
 }
 else if (div<50 && div>=40 && no[i].marks.sub1>=32 && no[i].marks.sub2 >=32 && no[i].marks.sub3>=32 && no[i].marks.sub4>=32 && no[i].marks.sub5 >=32)
      {
 
-
+SetColor(9);
 printf(" |%21s|%8d|%8d|%10d|%11d|%11d|%12d |%10d %%|   third   |  \n",no[i].nam,no[i].marks.sub1,no[i].marks.sub2,no[i].marks.sub3,no[i].marks.sub4,no[i].marks.sub5,no[i].total,no[i].per);
 }
 else
      {
 
-
+SetColor(9);
 printf(" |%21.7s|%8d|%8d|%10d|%11d|%11d|%12d |%10d %%|    fail   |  \n",no[i].nam,no[i].marks.sub1,no[i].marks.sub2,no[i].marks.sub3,no[i].marks.sub4,no[i].marks.sub5,no[i].total,no[i].per);
 }
+SetColor(5);
 printf(" ------------------------------------------------------------------------------------------------------------------\n");
 }
  loop:
 
+ SetColor(2);
 printf("\n\n\n\t\tdo you want to store the record in the data base ?");
 printf("\npress y/Y for yes and n/N for no  and 'e' to exit the program \t");
 
@@ -502,6 +618,7 @@ case 'y':
 
                 if(fp==NULL)
                 {
+                    SetColor(4);
                     printf("no file with id %s",no[i].id);
                     continue;
                 }
@@ -530,6 +647,7 @@ case 'e':
         exit(1);
     }
 default:
+SetColor(4);
     printf("sorry!! you have entered wrong choice");
     goto loop;
 
@@ -551,8 +669,9 @@ int i;
 char o; //option for erasing and  crating new data
 
  loop3:
-
+SetColor(9);
  printf("\n\n\tenter the id no.\t");
+SetColor(6);
  scanf("%s",(*std).id);
 
  strcpy(fname,(*std).id);
@@ -561,27 +680,42 @@ char o; //option for erasing and  crating new data
 
    if(fp==NULL)
    {
-      printf("sorry !! failed to open  file");
+SetColor(4);
+      printf("sorry !! failed to open  file\n\n");
       system("pause");
         exit(1);
        }
+SetColor(2);
   printf("\n\n\n\tenter the name of the student\t\t");
+SetColor(7);
  scanf("%s",(*std).name);
-    printf("\n\n\n\tenter the father's name of the student\t\t");
+ SetColor(2);
+    printf("\n\n\tenter the father's name of the student\t\t");
+SetColor(7);
  scanf("%s",(*std).f_name);
-  printf("\n\n\n\t enter the roll no. of the student\t\t");
+ SetColor(2);
+  printf("\n\n\t enter the roll no. of the student\t\t");
+SetColor(7);
   scanf("%s",(*std).roll_no);
-
- printf("\n\n\n\tenter the address of the student \t\t");
+SetColor(2);
+ printf("\n\n\tenter the address of the student \t\t");
+SetColor(7);
  scanf("%s",(*std).address);
-  printf("\n\n\n\tenter the  faculty   of the student \t\t");
+SetColor(2);
+  printf("\n\n\tenter the  faculty   of the student \t\t");
+SetColor(7);
   scanf("%s",(*std).faculty);
-  printf("\n\n\n\tenter the level of the student\t\t");
+SetColor(2);
+  printf("\n\n\tenter the level of the student\t\t");
+SetColor(7);
    scanf("%s",(*std).level);
-  printf("\n\n\n\tenter the  mobile no. of the student \t\t");
-  scanf("%s",(*std).phone_no);
-
-printf("\n\n\n\tenter the email address of the student\t\t");
+SetColor(2);
+  printf("\n\n\tenter the  mobile no. of the student \t\t");
+SetColor(7);
+  scanf("%s",(*std).mobile_no);
+SetColor(2);
+printf("\n\n\tenter the email address of the student\t\t");
+SetColor(7);
  scanf("%s",(*std).email);
 
  datastore(std);
@@ -592,7 +726,9 @@ FILE *fp;
 
     char file_name[10];
     char id[10];
+SetColor(9);
  printf("\n\n\tenter the id no.\t");
+ SetColor(6);
  scanf("%s",id);
   strcpy(file_name,id);
   strcat(file_name,".it");
@@ -600,7 +736,10 @@ FILE *fp;
 
 if(fp==NULL)
         {
+
+SetColor(4);
       printf("sorry!! id didn't match with our database \n\t\t");
+SetColor(7);
       system("pause");
       home_menu();
   }
@@ -608,8 +747,9 @@ if(fp==NULL)
     fclose(fp);
 
   remove(file_name);
-
+SetColor(3);
   printf("data has been  successfully removed\n\t\t");
+SetColor(7);
   system("pause");
 
   home_menu();
@@ -627,21 +767,26 @@ void login()
     int count=0;
     loop:
 
+
         system("cls");
+        SetColor(2);
         printf("\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t\tU S E R   L O G I N    ");
         printf("\n\t\t\t\t\t\t\t-----------------------------------------------\n");
+        SetColor(2);
     printf("\n\n\t\t\t\t\t\t\t\tENTER USER NAME :");
+    SetColor(4);
     scanf("%s",user_name);
 
     strcat(user_name,".it");
-     fp=fopen(\database\user_name,"r");
+     fp=fopen(user_name,"r");
      fgets(pw,10,fp);
 
  if(fp !=NULL){
         count=0;
 loop2:
-
+SetColor(2);
 printf("\n\t\t\t\t\t\t\t\tENTER PASSWORD:");
+SetColor(4);
 scanf("%s",password);
 	if(strcmp(password,pw) == 0)
 	{
@@ -658,15 +803,18 @@ scanf("%s",password);
 
         exit(1);
     }
-          printf("user name and password did not match\n");
+          printf("\n\t\tuser name and password did not match\n\t\t\t");
           system("pause");
-          printf("press 'e' to exit  and any other single character to re-enter password ");
+        alert:
+          printf(" \n\n\t\t\t DO YOU WANT TO EXIT <y/n> ");
           scanf(" %c",&option);
           switch(option){
-      case 'e':
+      case 'y':
         exit(1);
+      case 'n':
+           goto loop2;
       default:
-        goto loop2;
+         goto alert;
 
           }
 
@@ -696,10 +844,13 @@ struct old *u,olduser;
 u=&olduser;
 
 user_verification(u);
-
-printf("enter new user_name (less than 10 letters) : \t");
+SetColor(2);
+printf(" \n\n\n\t\t\t\tNEW USER_NAME (less than 10 letters) : \t");
+SetColor(6);
 scanf("%s",&user);
-printf("enter new password (less than 10 letters : \t");
+SetColor(2);
+printf("\n\t\t\t\t NEW PASSWORD (less than 10 letters : \t");
+SetColor(6);
 scanf("%s",&password);
 
 strcat(user,".it");
@@ -708,7 +859,8 @@ strcat(user,".it");
 fp=fopen(user,"w");
 if(fp==NULL)
 {
-    printf("error to create new account\n\n\n\t\t");
+    SetColor(4);
+    printf("\n\n\t\t\terror to create new account\n\n\n\t\t");
     system("pause");
     home_menu();
 }
@@ -716,14 +868,18 @@ if(fp==NULL)
     fputs(password,fp);
     fclose(fp);
 
+ printf("\n\n\n\t\t\t");
+ SetColor(16);
  printf("user_name and password has been  successfully changed");
+ SetColor(7);
  strcpy(old_name,(*u).old_user);
 
 
 
 remove(old_name); //old user removed
 
-printf("\n\n\t\t\t\t");
+printf("\n\n\t\t\t\t\t\t");
+SetColor(7);
 system("pause");
 
 
@@ -748,7 +904,11 @@ void user_verification(struct old *name){
     char choice;
     loop:
         system("cls");
-    printf("ENTER old USER NAME :");
+    SetColor(6);
+    printf("\n\n\n\n\t\t\t\t( A C C O U N T   S E T T I N G )");
+        SetColor(4);
+    printf("\n\n\n\t\t\t\t\t ENTER old USER NAME :");
+    SetColor(7);
     scanf("%s",(*name).old_user);
 
     strcat((*name).old_user,".it");
@@ -758,13 +918,18 @@ void user_verification(struct old *name){
  if(fp !=NULL){
      fgets(pw,10,fp);
 loop2:
-printf("ENTER PASSWORD:");
+    SetColor(4);
+printf("\n\t\t\t\t\t ENTER OLD PASSWORD:");
+SetColor(7);
 scanf("%s",password);
 	if(strcmp(password,pw) != 0)
 	{
-          printf("user name and password didn't match\n");
+	    SetColor(4);
+          printf("\t\t\tuser name and password didn't match\n");
+        SetColor(6);
           system("pause");
-          printf("press 'h' to goto home menu  and any other single character to re-enter password ");
+        SetColor(5);
+          printf("\t\t\tpress 'h' to goto home menu  and any other single character to re-enter password ");
           scanf(" %c",&choice);
         switch(choice)
           {
@@ -782,11 +947,15 @@ scanf("%s",password);
 
  else{
    fclose(fp);
-     printf("U S E R  name unknown \n\n\n");
+   SetColor(4);
+     printf("\t\t\t\tU S E R  name unknown \n\n\n");
+    SetColor(8);
         system("pause");
      system("cls");
      loop3:
-     printf("enter 'r' to re-entre user name and 'h' to goto home_menu");
+         SetColor(4);
+     printf("\t\t\t\t\tenter 'r' to re-entre user name and 'h' to goto home_menu   ");
+     SetColor(7);
      scanf(" %c",&choice);
      switch(choice){
  case 'r':{
@@ -798,7 +967,8 @@ scanf("%s",password);
      home_menu();
 
  default:
-    printf("you have entered wrong option");
+     SetColor(4);
+    printf("\t\t\t\tyou have entered wrong option\n\n");
     system("pause");
     goto loop3;
  }
